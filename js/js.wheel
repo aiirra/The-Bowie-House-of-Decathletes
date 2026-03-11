@@ -1,0 +1,34 @@
+const canvas = document.getElementById("wheelCanvas");
+const ctx = canvas.getContext("2d");
+const sectors = ["Prize1","Prize2","Prize3","Prize4"];
+let angle=0;
+
+function drawWheel(){
+  const size=canvas.width/2;
+  sectors.forEach((sec,i)=>{
+    ctx.beginPath();
+    ctx.moveTo(size,size);
+    ctx.arc(size,size,size,(i*2*Math.PI/sectors.length)+angle,((i+1)*2*Math.PI/sectors.length)+angle);
+    ctx.fillStyle=i%2===0?"#ff6a00":"#6a00ff";
+    ctx.fill();
+    ctx.stroke();
+    ctx.save();
+    ctx.translate(size,size);
+    ctx.rotate(i*2*Math.PI/sectors.length+angle+Math.PI/sectors.length);
+    ctx.fillStyle="white";
+    ctx.textAlign="right";
+    ctx.fillText(sec,size-10,0);
+    ctx.restore();
+  });
+}
+drawWheel();
+
+function spinWheel(){
+  let spin = Math.random()*10 + 10;
+  let spinInterval = setInterval(()=>{
+    angle+=0.1;
+    drawWheel();
+    spin--;
+    if(spin<=0) clearInterval(spinInterval);
+  },50);
+}
