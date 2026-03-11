@@ -1,1 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Newsletter</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<h1>Newsletter</h1>
+<a href="index.html">Home</a>
 
+<div class="section">
+  <form id="newsletterForm">
+    <label>Email:</label><br>
+    <input type="email" name="email" required><br><br>
+    <button type="submit" class="btn">Subscribe</button>
+  </form>
+</div>
+
+<script>
+document.getElementById("newsletterForm").addEventListener("submit",function(e){
+  e.preventDefault();
+  alert("Subscribed! ✅");
+});
+</script>
+
+</body>
+</html>
